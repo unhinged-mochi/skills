@@ -1,0 +1,30 @@
+[
+  {
+    "name": "library-semantics-false-positive",
+    "query": "/localreview (on a branch whose diff relies on an auth plugin option, e.g. authenticatedUsersOnly, to keep anonymous sessions out of checkout)",
+    "files": [],
+    "expected_behavior": [
+      "Banner states the scope (base ref, or all files when there is no common history)",
+      "A 'guests can reach checkout' claim is only verified if a voter quotes the installed library source (node_modules/<pkg>/dist) showing no anonymous-session guard; otherwise it is refuted",
+      "Headline has every normal and at most 8 nits; findings.json objects have exactly the 6 cloud keys"
+    ]
+  },
+  {
+    "name": "argument-parsing",
+    "query": "/localreview --fix 123 check the billing path",
+    "files": [],
+    "expected_behavior": [
+      "Treats 123 as PR mode and 'check the billing path' as the note, shown as Note (not a base)",
+      "Never aborts on unknown words; --fix applies after presenting and never commits"
+    ]
+  },
+  {
+    "name": "empty-diff",
+    "query": "/localreview (on a clean main with no local changes)",
+    "files": [],
+    "expected_behavior": [
+      "Stops in Phase 0 with: Nothing to review against main. Pass a base commit (/localreview <sha>) or a PR number.",
+      "Spawns no agents"
+    ]
+  }
+]
