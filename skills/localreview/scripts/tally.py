@@ -7,7 +7,7 @@ A missing or unparseable vote is errored: it never counts as a refute.
 """
 import collections, glob, json, os
 
-W = os.environ.get("LOCALREVIEW_WORK", "/tmp/localreview_work")
+W = os.environ.get("LOCALREVIEW_WORK") or os.path.expanduser("~/.cache/localreview_work")
 pool = json.load(open(f"{W}/scope/pool.json"))
 out, need_third = {}, []
 for b, v in sorted(pool["bugs"].items()):

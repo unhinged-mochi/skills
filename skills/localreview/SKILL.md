@@ -14,7 +14,7 @@ Files in this skill (paths relative to its base directory, written `<skill>/` in
 - [reference/formats.md](reference/formats.md): candidate, vote and finding JSON; `pr_comment`/`reasoning` conventions; the presentation template. Read before Phase 1.
 - [reference/provenance.md](reference/provenance.md): what was verified about the cloud original, and how this skill scored against it. Background only; not needed to run a review.
 - `templates/HUNTER_BRIEF.md`, `templates/VOTER_BRIEF.md`: shared briefs to fill in and copy to `scope/`.
-- `scripts/pool.py`, `scripts/tally.py`, `scripts/synth.py`: run these (don't reimplement them). Work dir defaults to `/tmp/localreview_work`; override with `LOCALREVIEW_WORK`.
+- `scripts/pool.py`, `scripts/tally.py`, `scripts/synth.py`: run these (don't reimplement them). Work dir defaults to `~/.cache/localreview_work` (per-user, not shared `/tmp`); override with `LOCALREVIEW_WORK`.
 - `evals/evals.json`: scenarios to re-check after editing this skill.
 
 Copy this checklist into your reply and tick it off:
@@ -37,7 +37,7 @@ localreview progress:
 3. Everything left is the **note**: a priority hint for hunters and for presentation. Never abort on unknown words; show it in the banner as `Note (not a base): "…"`.
 
 ## Phase 0 — Scope
-Work dir `$W` = `${LOCALREVIEW_WORK:-/tmp/localreview_work}` with `scope/ hunters/ reports/`. Wipe it unless `--resume` is set and `scope/diff.sha256` matches.
+Work dir `$W` = `${LOCALREVIEW_WORK:-$HOME/.cache/localreview_work}` with `scope/ hunters/ reports/`. Wipe it unless `--resume` is set and `scope/diff.sha256` matches.
 
 1. **Diff**
    - PR mode: `gh pr diff "$N"` and `gh pr view "$N" --json title,body,author,files`.

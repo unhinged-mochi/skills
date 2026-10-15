@@ -7,7 +7,7 @@ findings.more.json, findings.meta.json, unverified.json, findings.sarif. Prints 
 """
 import collections, glob, json, os, sys
 
-W = os.environ.get("LOCALREVIEW_WORK", "/tmp/localreview_work")
+W = os.environ.get("LOCALREVIEW_WORK") or os.path.expanduser("~/.cache/localreview_work")
 # The cloud headlined 10 of 20 candidates; local voters keep far more, so cap the nits shown up front.
 HEADLINE_NITS = 8
 KEYS = ("file_path", "severity", "start_line", "end_line", "pr_comment", "reasoning")

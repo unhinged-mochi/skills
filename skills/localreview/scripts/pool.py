@@ -9,7 +9,7 @@
 """
 import glob, json, os, sys
 
-W = os.environ.get("LOCALREVIEW_WORK", "/tmp/localreview_work")
+W = os.environ.get("LOCALREVIEW_WORK") or os.path.expanduser("~/.cache/localreview_work")
 P = f"{W}/scope/pool.json"
 
 
